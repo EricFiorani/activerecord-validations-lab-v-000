@@ -1,4 +1,4 @@
-class MyValidator < ActiveModel::Validator
+class Validator < ActiveModel::Validator
   def validate(record)
     if record.title
       unless record.title.match /Secret|Top|Guess|Won't Believe/
@@ -14,5 +14,5 @@ class Post < ActiveRecord::Base
   validates :summart, length: { maximum: 250 }
   validates :category, inclusion: { in: %w(Fiction Non-Fiction) }
   include ActiveModel::Validations
-  validates_with MyValidator
+  validates_with Validator
 end
